@@ -1,266 +1,215 @@
-import React, { useState } from 'react'
-import { BsFillFolderFill } from 'react-icons/bs'
-import { FaTools } from 'react-icons/fa'
-import img1 from './assets/custome.png'
-import img2 from './assets/general.png'
-import { setClose } from './App'
+import React, { useEffect, useState } from 'react'
+import { BsArrowLeftShort } from 'react-icons/bs'
+import pdfimg from './assets/pdf.jpeg'
+import visitin1 from './assets/visitincard1.png'
+import visitin2 from './assets/visitincard2.png'
+import visitin3 from './assets/visitincard3.png'
+import { Typewriter } from "react-simple-typewriter";
+import { ImCheckboxChecked } from 'react-icons/im'
 
-const RightContainer = ({ isActive, setIsActive }) => {
-    const [isButtonClicked, setIsButtonClicked] = useState({
-        isGeneralButton: false,
-        isCustomerButton: false,
-        isFolderButton: false,
-        custButMsg1: false,
-        custButMsg2: false,
-        custButMsg3: false,
-        custButMsg4: false,
-        custButMsg5: false,
-        custButMsg6: false,
-        custButMsg7: false,
-        isToolButton: false,
-        isContactCardButton: false,
-        isLetsTodoButton: false,
-        isExpensesButton: false,
-        isConverterbutton: false,
-        isValidatorButton: false,
-
+const RightContainer = () => {
+    const [isActive, setIsActive] = useState({
+        hsc: false,
+        mba: false,
+        ca: false,
+        reas: false
     })
-    var close = false
-    const handleClose = () => {
+
+    const [showContent, setShowContent] = useState({
+        showText1: false,
+        showpdf: false,
+        showUpdated: false,
+        showpdfImage: false,
+        showpdfDetails: false,
+        containerShowText1: false,
+        containerShowImage1: false,
+        containerShowImage2: false,
+        containerShowImage3: false,
+        container1ShowText1: false,
+        container1ShowImage1: false,
+        container1Details: false,
+        container2firstText: false,
+        container2firstText1: false,
+        container2firstText2: false,
+        container2firstText3: false,
+        container2firstText4: false,
+        container2firstText5: false,
+    })
+
+    const [isSearch, setIsSearch] = useState()
+
+    let firstArray = [
+        {
+            firstText: 'Hello',
+            image1: pdfimg,
+            secondText: 'Uploaded',
+            icon: < ImCheckboxChecked className="checkicon" />,
+            image2: 'https://static.wixstatic.com/media/91ad40_e8aabd93568742169c363b02d40313ae~mv2.png/v1/fill/w_301,h_356,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Screenshot__12_-removebg-preview.png',
+            finalText: ' The text extract provides three scenarios for X Ltd. and asks for the corresponding journal entries:1. X Ltd. subdivides its equity shares into 10,000 equity shares of 10 each, of which 8 per share is called up and paid up.2. X Ltd. converts its 1,000 equity shares of 100 each (assumed fully-paid) into 1,00,000 worth of stock.3. The preference shares are converted into 11% unsecured debentures of 100 each (including arrears of dividends). Patents and Goodwill are to be written off.The journal entries for these scenarios would be:1. *Equity Share Capital A/c Dr. 80,000**To Equity Share Capital (₹10) A/c 80,000*(Being equity shares of ₹100 each subdivided into shares of ₹10 each)2. *Equity Share Capital A/c Dr. 1,00,000**To Stock A/c 1,00,000*(Being 1,000 equity shares of ₹100 each converted into ₹1,00,000 worth of stock)3. *Preference Share Capital A/c Dr. 1,50,000**Dividend in Arrears A/c Dr. 33,000**To 11% Unsecured Debentures A/c 1,83,000*(Being preference shares converted into 11% unsecured debentures including arrears of dividends)*Goodwill A/c Dr. 80,000**Patents A/c Dr. 27,800**To Profit and Loss A/c 1,07,800*(Being intangible assets written off)'
+        },
+        {
+            firstText: 'Hello',
+            image1: visitin1,
+            image2: visitin2,
+            image3: visitin3,
+        },
+        {
+            firstText: 'Hello',
+            image1: "https://static.wixstatic.com/media/91ad40_cc0987dd3d354e47a5f21bc0d77752ab~mv2.png/v1/fill/w_334,h_348,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Bill-removebg-preview.png",
+            finalText: 'Summary: CASH BILL Invoice Number: No.40 Vendor: Name: M.No food Products: Product ID: 1 Category: Grocery Description: Tomato Quantity: 3 Unit Price: 55 Tax Rate: 0 %Total: 165 --- Product ID: 2 Category: Grocery Description: onion Quantity: 40 Unit Price: 2 Tax Rate: 0 %Total: 80--- Product ID: 3Category: Kitchen appliances',
+        },
+        {
+            firstText: 'Hello',
+            firstText1: 'Meet Mr X at Yellowknife, Mars tomorrow 4pm',
+            firstText2: 'itle: Meet Mr X at Yellowknife, Mars 🚀🔴👽Added to your todo !!',
+            firstText3: 'Remind me to turn off the gas after 5 min',
+            firstText4: 'title: Turn the Gas off ⛔️🔥Added to your todo !!',
+            firstText5: 'A Reminder to complete your task: Title: Turn the Gas off ⛔️🔥.',
+        }
+
+    ]
+
+
+    const handleType = (count) => {
+        // access word count number
+        console.log(count)
+
     }
 
-    console.log(isButtonClicked)
-    console.log(close, "close")
+    const handleDone = () => {
+        console.log(`Done after 5 loops!`)
+    }
+
+
+    let scrollid = document.getElementById('scroll')
+
+
+
+    if (scrollid) {
+        scrollid.scrollIntoView()
+    }
+
+    useEffect(() => {
+        if (isActive.hsc) {
+            const interval = setInterval(() => {
+                setShowContent((prevState) => ({ ...prevState, showText1: true }))
+            }, 1000);
+
+            const interval1 = setInterval(() => {
+                setShowContent((prevState) => ({ ...prevState, showpdf: true }))
+            }, 4000);
+
+            const interval2 = setInterval(() => {
+                setShowContent((prevState) => ({ ...prevState, showUpdated: true }))
+            }, 6000);
+
+            const interval3 = setInterval(() => {
+                setShowContent((prevState) => ({ ...prevState, showpdfImage: true }))
+            }, 8000);
+
+            const interval4 = setInterval(() => {
+                // scrollContainerRef.current.const scrollTop = scrollContainerRef.current.scrollHeight;
+                setShowContent((prevState) => ({ ...prevState, showpdfDetails: true }))
+            }, 10000);
+        }
+    }, [showContent, isActive.hsc])
+
     return (
         <>
-            {/* <div className='right-container' style={{position:closeChat?'relative':'absolute'}}> */}
             <div class="header">
-                <div onClick={() => handleClose()}>
-                    back
+                <div className="close-button" onClick={() => {
+                    setIsActive((prevState) => ({ ...prevState, hsc: false }))
+                }}
+                >
+                    <BsArrowLeftShort />
                 </div>
                 <div class="img-text">
-                    <h4>HSC Student<br /><span>Online</span></h4>
+                    <h4>Q&A with Text and Image<br /></h4>
+                    <p>Online</p>
+                </div>
+
+                <div>
+                    <span className="desktop-online">Online</span>
                 </div>
             </div >
 
             <div className='chat-container' id="chat-container">
-                <div className="message-box friend-message">
-                    <p>How To Use HSC Student ChatWithFolder On Whatsapp!</p><br />
-                </div>
-                <button className="message-button" id="message-button" style={{ backgroundColor: isButtonClicked.isFolderButton ? "rgb(244, 195, 19)" : "rgb(248, 209, 74)" }} onClick={() => setIsButtonClicked((prevState) => ({ ...prevState, isFolderButton: !isButtonClicked.isFolderButton, isToolButton: false, isGeneralButton: false, isCustomerButton: false, custButMsg1: false, custButMsg2: false, custButMsg3: false, custButMsg4: false, custButMsg5: false, custButMsg6: false, custButMsg7: false, isContactCardButton: false, isLetsTodoButton: false, isConverterbutton: false, isExpensesButton: false, isValidatorButton: false }))}><BsFillFolderFill className='icon' />Folder</button>
-                <button className="message-button" id="message-button" style={{ backgroundColor: isButtonClicked.isToolButton ? "rgb(244, 195, 19)" : "rgb(248, 209, 74)" }} onClick={() => setIsButtonClicked((prevState) => ({ ...prevState, isToolButton: !isButtonClicked.isToolButton, isFolderButton: false, isCustomerButton: false, custButMsg1: false, custButMsg2: false, custButMsg3: false, custButMsg4: false, custButMsg5: false, custButMsg6: false, custButMsg7: false, isContactCardButton: false, isLetsTodoButton: false, isConverterbutton: false, isExpensesButton: false, isValidatorButton: false }))}><FaTools />Tools</button>
+                <>
+                    {
+                        showContent.showText1 ?
+                            <>
+                                <p class="message-box friend-message" id="typewriter">
+                                    <Typewriter
+                                        words={[firstArray[0].firstText]}
+                                        loop={0}
+                                        cursor
+                                        cursorStyle='|'
+                                        typeSpeed={200}
+                                        deleteSpeed={50}
+                                        delaySpeed={2500}
+                                        onLoopDone={handleDone}
+                                        onType={handleType}
+                                    />
+                                </p>
+                            </>
+                            :
+                            null
+                    }
 
-                {
-                    isButtonClicked.isToolButton && (
-                        <>
-                            <div id="cusotme-folder-message-new-0" class="my-message  message-box">
-                                <p>
-                                    Tool helps empower users to streamline contact management, task organization, expense tracking, file conversion, and content validation for enhanced productivity and efficiency
+                    {
+                        showContent.showpdf ?
+                            <>
+                                <div className="message-box my-message">
+                                    <img src={firstArray[0].image1} alt="" className="pdfimg" />
+                                </div>
+                            </>
+                            :
+                            null
+                    }
+
+                    {
+                        showContent.showUpdated ?
+                            <div>
+                                <p class="message-box friend-message" id="typewriter">
+                                    <Typewriter
+                                        words={[firstArray[0].secondText]}
+                                        loop={0}
+                                        cursor
+                                        cursorStyle='|'
+                                        typeSpeed={100}
+                                        deleteSpeed={50}
+                                        delaySpeed={2500}
+                                        onLoopDone={handleDone}
+                                        onType={handleType}
+                                    />
+                                    {firstArray[0].icon}
+
                                 </p>
                             </div>
-                            <button id="general-folder" className="general-folder message-box" onClick={() => setIsButtonClicked((prevState) => ({ ...prevState, isContactCardButton: true, isLetsTodoButton: false, isExpensesButton: false, isConverterbutton: false, isValidatorButton: false }))}>Contact Card</button>
-                            <button id="general-folder" className="general-folder message-box" onClick={() => setIsButtonClicked((prevState) => ({ ...prevState, isContactCardButton: false, isLetsTodoButton: true, isExpensesButton: false, isConverterbutton: false, isValidatorButton: false }))}>lets Todo</button>
-                            <button id="general-folder" className="general-folder message-box" onClick={() => setIsButtonClicked((prevState) => ({ ...prevState, isContactCardButton: false, isLetsTodoButton: false, isExpensesButton: true, isConverterbutton: false, isValidatorButton: false }))}>Expenses</button>
-                            <button id="general-folder" className="general-folder message-box" onClick={() => setIsButtonClicked((prevState) => ({ ...prevState, isContactCardButton: false, isLetsTodoButton: false, isExpensesButton: false, isConverterbutton: true, isValidatorButton: false }))}>Converter</button>
-                            <button id="general-folder" className="general-folder message-box" onClick={() => setIsButtonClicked((prevState) => ({ ...prevState, isContactCardButton: false, isLetsTodoButton: false, isExpensesButton: false, isConverterbutton: false, isValidatorButton: true }))}>Validator</button>
-
-                            <>
-                                {
-                                    isButtonClicked.isContactCardButton && (
-
-                                        <div class="my-message  message-box sub-tool-msg-class" id="sub-msg-id1">
-                                            <p>
-                                                <>
-                                                    <b>Contact Card</b><br />
-                                                    Upload pic anything with a contact number,address,etc get a contact card and store in your side brain
-                                                </>
-
-                                            </p>
-                                        </div>
-                                    )
-                                }
-
-                                {
-                                    isButtonClicked.isLetsTodoButton && (
-
-                                        <div class="my-message  message-box sub-tool-msg-class" id="sub-msg-id1">
-                                            <p>
-                                                <>
-                                                    <b>Lets Todo</b><br />
-                                                    Add,Remove,Update,Get Reminded and more.
-                                                </>
-                                            </p>
-                                        </div>
-                                    )
-
-                                }
-
-                                {
-                                    isButtonClicked.isExpensesButton && (
-
-                                        <div class="my-message  message-box sub-tool-msg-class" id="sub-msg-id1">
-                                            <p>
-                                                <>
-                                                    <b>Expenses</b><br />
-                                                    Store pics of any bills anytype wherever amount is mentioned for warranty check,extract, asset tracking and more
-                                                </>
-                                            </p>
-                                        </div>
-                                    )
-
-                                }
-
-                                {
-                                    isButtonClicked.isConverterbutton && (
-
-                                        <div class="my-message  message-box sub-tool-msg-class" id="sub-msg-id1">
-                                            <p>
-                                                <>
-                                                    <b>Converter</b><br />
-                                                    Convert your files from ppt to pdf,doc to pdf and more
-                                                </>
-                                            </p>
-                                        </div>
-                                    )
-
-                                }
+                            :
+                            null
+                    }
 
 
-                                {
-                                    isButtonClicked.isValidatorButton && (
+                    {
+                        showContent.showpdfImage ?
+                            <div className="message-box my-message"><img className="pdfimg" src={firstArray[0].image2} alt="" /></div>
+                            :
+                            null
+                    }
 
-                                        <div class="my-message  message-box sub-tool-msg-class" id="sub-msg-id1">
-                                            <p>
-                                                <>
-                                                    <b>Validator</b><br />
-                                                    Upload pic of case,question and get relevant content from Folders
-                                                </>
-                                            </p>
-                                        </div>
-                                    )
-
-                                }
-                            </>
-                        </>
-                    )
-                }
-
-                {
-                    isButtonClicked.isFolderButton && (
-                        <>
-                            <button id="general-folder" className="general-folder message-box" onClick={() => setIsButtonClicked((prevState) => ({ ...prevState, isGeneralButton: true, isCustomerButton: false, custButMsg1: false, custButMsg2: false, custButMsg3: false, custButMsg4: false, custButMsg5: false, custButMsg6: false, custButMsg7: false }))}>Gernal Folder</button>
-                            <button id="custome-folder" style={{ backgroundColor: isButtonClicked.isCustomerButton ? "rgb(244, 195, 19)" : "rgb(248, 209, 74)" }} className="custome-folder" onClick={() => setIsButtonClicked((prevState) => ({ ...prevState, isCustomerButton: true, isGeneralButton: false }))}>Custome Folder</button>
-                            {/* <div id="general-folder-message" class="general-folder-message my-message message-box"> */}
-                            <>
-                                {
-                                    isButtonClicked.isGeneralButton && (
-                                        <div id="general-folder-message" class="general-folder-message my-message message-box">
-                                            <p>
-                                                <img src={img2} alt="" />
-                                                The General Folder serves as a centralized hub for all your files, documents, and resources. It's designed to help you keep everything organized and easily accessible in one place. Whether it's personal files, work-related documents, or miscellaneous materials, the General Folder is where you can store them all
-                                            </p>
-                                        </div>
-                                    )
-                                }
-
-                                {
-                                    isButtonClicked.isCustomerButton && (
-                                        <>
-                                            <div id="cusotme-folder-message-new-0" class="my-message  message-box">
-                                                <p>
-                                                    <img src={img1} alt="" />
-                                                    Custom Folders allow you to further organize your files based on your specific needs. You can create folders with names that make sense to you, helping you categorize and manage your documents effectively.
-                                                </p>
-                                            </div>
-                                            <button id="cusotme-folder-message-new-1" class="cusotme-folder-message  message-box" onClick={() => setIsButtonClicked((prevState) => ({ ...prevState, custButMsg1: true, custButMsg2: false, custButMsg3: false, custButMsg4: false, custButMsg5: false, custButMsg6: false, custButMsg7: false }))}>My Health Records</button>
-                                            <button id="cusotme-folder-message-new-2" class="cusotme-folder-message  message-box" onClick={() => setIsButtonClicked((prevState) => ({ ...prevState, custButMsg1: false, custButMsg2: true, custButMsg3: false, custButMsg4: false, custButMsg5: false, custButMsg6: false, custButMsg7: false }))}>Studies Economics</button>
-                                            <button id="cusotme-folder-message-new-3" class="cusotme-folder-message  message-box" onClick={() => setIsButtonClicked((prevState) => ({ ...prevState, custButMsg1: false, custButMsg2: false, custButMsg3: true, custButMsg4: false, custButMsg5: false, custButMsg6: false, custButMsg7: false }))}>Studies Physics</button>
-                                            <button id="cusotme-folder-message-new-4" class="cusotme-folder-message  message-box" onClick={() => setIsButtonClicked((prevState) => ({ ...prevState, custButMsg1: false, custButMsg2: false, custButMsg3: false, custButMsg4: true, custButMsg5: false, custButMsg6: false, custButMsg7: false }))}>Contracts</button>
-                                            <button id="cusotme-folder-message-new-5" class="cusotme-folder-message  message-box" onClick={() => setIsButtonClicked((prevState) => ({ ...prevState, custButMsg1: false, custButMsg2: false, custButMsg3: false, custButMsg4: false, custButMsg5: true, custButMsg6: false, custButMsg7: false }))}>Knowledge</button>
-                                            <button id="cusotme-folder-message-new-6" class="cusotme-folder-message  message-box" onClick={() => setIsButtonClicked((prevState) => ({ ...prevState, custButMsg1: false, custButMsg2: false, custButMsg3: false, custButMsg4: false, custButMsg5: false, custButMsg6: true, custButMsg7: false }))}>Time Table</button>
-                                            <button id="cusotme-folder-message-new-7" class="cusotme-folder-message  message-box" onClick={() => setIsButtonClicked((prevState) => ({ ...prevState, custButMsg1: false, custButMsg2: false, custButMsg3: false, custButMsg4: false, custButMsg5: false, custButMsg6: false, custButMsg7: true }))}>Projects</button>
-                                            <div class="my-message  message-box sub-msg-class" id="sub-msg-id1">
-                                                {
-                                                    (isButtonClicked.custButMsg1 && isButtonClicked.isCustomerButton) && (
-                                                        <p>
-                                                            <img src={'https://static.wixstatic.com/media/91ad40_5319cb69560440058bfb76430609f62f~mv2.png/v1/fill/w_523,h_523,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/college%20entrance%20exam-rafiki.png'} alt="" />
-
-                                                            <b>My Health Records</b><br />
-                                                            Store your health-related documents, medical records, and information related to your well-being here
-                                                        </p>
-                                                    )
-                                                }
-
-                                                {
-                                                    isButtonClicked.custButMsg2 && (
-                                                        <p>
-                                                            <img src={'https://static.wixstatic.com/media/91ad40_5319cb69560440058bfb76430609f62f~mv2.png/v1/fill/w_523,h_523,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/college%20entrance%20exam-rafiki.png'} alt="" />
-
-                                                            <b>Studies Economics</b> <br /> Ideal for academic materials, textbooks, research papers, and notes related to economics
-                                                        </p>
-                                                    )
-                                                }
-
-                                                {
-                                                    isButtonClicked.custButMsg3 && (
-                                                        <p>
-                                                            <img src={'https://static.wixstatic.com/media/91ad40_5319cb69560440058bfb76430609f62f~mv2.png/v1/fill/w_523,h_523,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/college%20entrance%20exam-rafiki.png'} alt="" />
-
-                                                            <b>Studies Physics</b> <br />Use this folder for organizing your physics-related study materials, including lecture notes and reference materials.
-                                                        </p>
-                                                    )
-                                                }
-
-                                                {
-                                                    isButtonClicked.custButMsg4 && (
-                                                        <p>
-                                                            <img src={'https://static.wixstatic.com/media/91ad40_5319cb69560440058bfb76430609f62f~mv2.png/v1/fill/w_523,h_523,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/college%20entrance%20exam-rafiki.png'} alt="" />
-
-                                                            <b>Contracts</b> <br /> Keep all your contract documents, agreements, and legal paperwork neatly organized in this folder.
-                                                        </p>
-                                                    )
-                                                }
-
-                                                {
-                                                    isButtonClicked.custButMsg5 && (
-                                                        <p>
-                                                            <img src={'https://static.wixstatic.com/media/91ad40_5319cb69560440058bfb76430609f62f~mv2.png/v1/fill/w_523,h_523,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/college%20entrance%20exam-rafiki.png'} alt="" />
-
-                                                            <b>Knowledge</b> <br />Use this folder to store informational resources, articles, and reference materials that you find valuable.
-                                                        </p>
-                                                    )
-                                                }
-
-                                                {
-                                                    isButtonClicked.custButMsg6 && (
-                                                        <p>
-                                                            <img src={'https://static.wixstatic.com/media/91ad40_5319cb69560440058bfb76430609f62f~mv2.png/v1/fill/w_523,h_523,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/college%20entrance%20exam-rafiki.png'} alt="" />
-                                                            <b>Time Table</b> <br />Time TableOrganize your schedules, timetables, and event plans to stay on top of your commitments.
-                                                        </p>
-                                                    )
-                                                }
-
-                                                {
-                                                    isButtonClicked.custButMsg7 && (
-                                                        <p>
-                                                            <img src={'https://static.wixstatic.com/media/91ad40_5319cb69560440058bfb76430609f62f~mv2.png/v1/fill/w_523,h_523,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/college%20entrance%20exam-rafiki.png'} alt="" />
-
-                                                            <b>Projects</b> <br />For managing project-related files, including plans, reports, and collaboration documents.
-                                                        </p>
-                                                    )
-                                                }
-
-                                            </div>
-                                        </>
-                                    )
-                                }
-                            </>
-                        </>
-                    )
-                }
-
-            </div >
-            {/* </div> */}
+                    {
+                        showContent.showpdfDetails ?
+                            <div className="message-box friend-message" style={{ scrollSnapAlign: 'end' }} id="scroll">
+                                <p style={{ textAlign: 'left' }}>
+                                    {firstArray[0].finalText}
+                                </p>
+                            </div>
+                            :
+                            null
+                    }
+                </>
+            </div>
         </>
     )
 }
