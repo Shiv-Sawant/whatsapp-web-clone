@@ -105,23 +105,30 @@ function App() {
     return chat?.name?.toLowerCase().includes(isSearch?.toLowerCase())
   }) : recentChatArray
 
-
-  const handleType = (count) => {
-    console.log(count)
-  }
-
-  const handleDone = () => {
-    console.log(`Done after 5 loops!`)
-  }
-
   const handleActive = (chat) => {
     setIsActive((prevState) => ({ ...prevState, hsc: chat.name === "Q&A with Text and Image" ? true : false, mba: chat.name === "Visiting card / Name Board" ? true : false, ca: chat.name === "Expenses Bills" ? true : false, reas: chat.name === "To Do" ? true : false }))
   }
+  const handleClose = (type) => {
+    switch (type) {
+      case "hsc":
+        setIsActive((prevState) => ({ ...prevState, hsc: false }))
+        break;
 
-  let scrollid = document.getElementById('scroll')
+      case "mba":
+        setIsActive((prevState) => ({ ...prevState, mba: false }))
+        break;
 
-  if (scrollid) {
-    scrollid.scrollIntoView()
+      case "ca":
+        setIsActive((prevState) => ({ ...prevState, ca: false }))
+        break;
+
+      case "reas":
+        setIsActive((prevState) => ({ ...prevState, reas: false }))
+        break;
+
+      default:
+        break;
+    }
   }
 
   useEffect(() => {
@@ -253,7 +260,7 @@ function App() {
             <>
               <div class="header">
                 <div className="close-button" onClick={() => {
-                  setIsActive((prevState) => ({ ...prevState, hsc: false }))
+                  handleClose("hsc")
                 }}
                 >
                   <BsArrowLeftShort />
@@ -318,7 +325,7 @@ function App() {
 
                   {
                     <div className="message-box friend-message container1text3" id='container1text3 '>
-                      <p style={{ textAlign: 'left' }}>
+                      <p style={{ textAlign: 'left' }} className="final-text">
                         {firstArray[0].finalText}
                       </p>
                     </div>
@@ -332,7 +339,7 @@ function App() {
               <>
                 <div class="header">
                   <div className="close-button" onClick={() => {
-                    setIsActive((prevState) => ({ ...prevState, hsc: false }))
+                    handleClose("mba")
                   }}
                   >
                     <BsArrowLeftShort />
@@ -373,7 +380,7 @@ function App() {
                 <>
                   <div class="header">
                     <div className="close-button" onClick={() => {
-                      setIsActive((prevState) => ({ ...prevState, hsc: false }))
+                      handleClose("ca")
                     }}
                     >
                       <BsArrowLeftShort />
@@ -411,7 +418,7 @@ function App() {
                   <>
                     <div class="header">
                       <div className="close-button" onClick={() => {
-                        setIsActive((prevState) => ({ ...prevState, hsc: false }))
+                        handleClose("reas")
                       }}
                       >
                         <BsArrowLeftShort />

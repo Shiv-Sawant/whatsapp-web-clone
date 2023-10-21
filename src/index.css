@@ -495,7 +495,7 @@
     .right-container .header .img-text h4 {
         font-weight: 500;
         line-height: 1.2em;
-        margin-left: 15px;
+        /* margin-left: 15px; */
     }
 
     .right-container .header .img-text h4 span {
@@ -842,6 +842,7 @@
             align-items: center;
             justify-content: center;
             padding-right: 2px;
+            z-index: 1000;
         }
 
         .close-button svg {
@@ -916,8 +917,22 @@
         .left-container .header .img-text h4 {
             display: flex;
             align-items: center;
+            width: 148px;
             /* gap: 8rem; */
         }
+
+        .right-container .header .img-text h4 {
+            font-size: 12px;
+            width: 148px;
+        }
+
+        .right-container .header .img-text p{
+            width: 148px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
 
         .img-text {
             display: flex;
@@ -943,7 +958,7 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            gap: 3rem;
+            gap: 2rem;
         }
 
         .sub-tool-msg-class {
@@ -961,11 +976,21 @@
         }
 
         .message-box p {
-            min-width: 250px;
-            max-width: 250px;
+            min-width: 100px;
+            /* max-width: 100px; */
             margin-bottom: 5px;
             /* min-width: 100px; */
             /* padding: 1rem 4rem; */
+        }
+
+        .message-box .final-text {
+            min-width: 150px;
+            max-width: 150px;
+        }
+
+
+        .message-box img {
+            width: 170px;
         }
 
         .user-img {
