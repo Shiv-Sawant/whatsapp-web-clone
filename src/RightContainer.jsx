@@ -90,27 +90,40 @@ const RightContainer = () => {
     }
 
     useEffect(() => {
+        let timout1
+        let timout2
+        let timout3
+        let timout4
+        let timout5
         if (isActive.hsc) {
-            const interval = setInterval(() => {
+            timout1 = setTimeout(() => {
                 setShowContent((prevState) => ({ ...prevState, showText1: true }))
             }, 1000);
 
-            const interval1 = setInterval(() => {
+            timout2 = setTimeout(() => {
                 setShowContent((prevState) => ({ ...prevState, showpdf: true }))
             }, 4000);
 
-            const interval2 = setInterval(() => {
+            timout3 = setTimeout(() => {
                 setShowContent((prevState) => ({ ...prevState, showUpdated: true }))
             }, 6000);
 
-            const interval3 = setInterval(() => {
+            timout4 = setTimeout(() => {
                 setShowContent((prevState) => ({ ...prevState, showpdfImage: true }))
             }, 8000);
 
-            const interval4 = setInterval(() => {
+            timout5 = setTimeout(() => {
                 // scrollContainerRef.current.const scrollTop = scrollContainerRef.current.scrollHeight;
                 setShowContent((prevState) => ({ ...prevState, showpdfDetails: true }))
             }, 10000);
+        }
+
+        return ()=>{
+            clearTimeout(timout1)
+            clearTimeout(timout2)
+            clearTimeout(timout3)
+            clearTimeout(timout4)
+            clearTimeout(timout5)
         }
     }, [showContent, isActive.hsc])
 

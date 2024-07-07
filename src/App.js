@@ -142,7 +142,6 @@ function App() {
         setShowContent((prevState) => ({ ...prevState, showText1: true }))
       }, 2000)
     } else {
-      clearTimeout(timout1)
 
       let chatContainerId = document.getElementById('chat-container')
 
@@ -171,7 +170,6 @@ function App() {
         setShowContent((prevState) => ({ ...prevState, containerShowText1: true }))
       }, 2000)
     } else {
-      clearTimeout(timout2)
     }
 
     if (isActive.ca) {
@@ -179,7 +177,6 @@ function App() {
         setShowContent((prevState) => ({ ...prevState, container1ShowText1: true }))
       }, 2000)
     } else {
-      clearTimeout(timout3)
     }
 
     if (isActive.reas) {
@@ -187,10 +184,16 @@ function App() {
         setShowContent((prevState) => ({ ...prevState, container2firstText: true }))
       }, 2000)
     } else {
-      clearTimeout(timout4)
     }
 
     // }
+
+    return () => {
+      clearTimeout(timout1)
+      clearTimeout(timout2)
+      clearTimeout(timout3)
+      clearTimeout(timout4)
+    }
 
   }, [isSearch, filter, showContent, isActive.hsc, isActive.mba, isActive.ca, isActive.reas])
 
@@ -313,7 +316,7 @@ function App() {
 
                     <div className="message-box friend-message container1text2" id="container1text2">
                       <p>
-                        Updated <ImCheckboxChecked className="checked" />
+                        Uploaded <ImCheckboxChecked className="checked" />
                       </p>
                     </div>
                   }
